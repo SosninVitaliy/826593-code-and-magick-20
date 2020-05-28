@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Виталий Соснин](https://up.htmlacademy.ru/javascript/20/user/826593).
-* Наставник: `Неизвестно`.
+* Наставник: `Асет Актай`.
 
 ---
 
