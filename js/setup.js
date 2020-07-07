@@ -39,3 +39,75 @@ var displayWizards = function () {
   }
 };
 displayWizards();
+
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+var setupUserName = document.querySelector('.setup-user-name');
+
+var onPopupEscPress = function (evt) {
+  if (evt.key === 'Escape' && !setupUserName.matches(':focus')) {
+    evt.preventDefault();
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  setup.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+});
+
+var setupFireballWrap = document.querySelector('.setup-fireball-wrap');
+var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+var fireballColorInput = document.querySelector('[name = fireball-color]');
+var coatColorInput = document.querySelector('[name = coat-color]');
+var eyesColorInput = document.querySelector('[name = eyes-color]');
+
+var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+
+setupFireballWrap.addEventListener('click', function () {
+  var color = getRandomElement(FIREBALL_COLOR);
+  setupFireballWrap.style.backgroundColor = color;
+  fireballColorInput.value = color;
+});
+
+wizardCoat.addEventListener('click', function () {
+  var color = getRandomElement(WIZARD_COLOR);
+  wizardCoat.style.fill = color;
+  coatColorInput.value = color;
+});
+
+wizardEyes.addEventListener('click', function () {
+  var color = getRandomElement(WIZARD_EYES);
+  wizardEyes.style.fill = color;
+  eyesColorInput.value = color;
+});
